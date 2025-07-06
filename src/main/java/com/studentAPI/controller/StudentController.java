@@ -18,29 +18,9 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping("/submit")
-    public ResponseEntity<String> submitApplication(
-            @RequestPart("student") StudentDTO student,
-            @RequestPart("sscMarkSheet") MultipartFile sscMarkSheet,
-            @RequestPart("interMarkSheet") MultipartFile interMarkSheet,
-            @RequestPart("interTC") MultipartFile interTC,
-            @RequestPart("interStudyConduct") MultipartFile interStudyConduct,
-            @RequestPart("casteIncome") MultipartFile casteIncome,
-            @RequestPart("aadhar") MultipartFile aadhar,
-            @RequestPart("ration") MultipartFile ration,
-            @RequestPart("passportPhoto") MultipartFile passportPhoto
-    ) throws MessagingException, IOException {
+    public ResponseEntity<String> submitApplication(@RequestPart("student") StudentDTO student) throws MessagingException,IOException{
 
-        String result = studentService.processStudentApplication(
-                student,
-                sscMarkSheet,
-                interMarkSheet,
-                interTC,
-                interStudyConduct,
-                casteIncome,
-                aadhar,
-                ration,
-                passportPhoto
-        );
+        String result = studentService.processStudentApplication(student);
 
         return ResponseEntity.ok(result);
     }

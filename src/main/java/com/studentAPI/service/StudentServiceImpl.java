@@ -4,11 +4,9 @@ import com.studentAPI.dto.StudentDTO;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
@@ -19,19 +17,11 @@ public class StudentServiceImpl implements StudentService {
     private JavaMailSender mailSender;
 
     @Override
-    public String processStudentApplication(StudentDTO student,
-                                            MultipartFile sscMarkSheet,
-                                            MultipartFile interMarkSheet,
-                                            MultipartFile interTC,
-                                            MultipartFile interStudyConduct,
-                                            MultipartFile casteIncome,
-                                            MultipartFile aadhar,
-                                            MultipartFile ration,
-                                            MultipartFile passportPhoto)
-            throws MessagingException, IOException {
+    public String processStudentApplication(StudentDTO student)
+            throws MessagingException ,IOException{
 
         MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        MimeMessageHelper helper = new MimeMessageHelper(message);
 
         helper.setTo(student.getEmail());
         helper.setSubject("Application Received - Confirmation");
@@ -52,28 +42,14 @@ public class StudentServiceImpl implements StudentService {
                 "<tr><td><strong>Rank:</strong></td><td>" + student.getApeapcetRank() + "</td></tr>" +
                 "</table>" +
                 "<br/>" +student.toString()+
-                "<p>📌 Our team will verify your documents shortly. Please keep an eye on your email for further updates.</p>" +
-                "<p style='margin-top: 30px;'>Best Regards,<br/><strong>Admission Team</strong><br/>Sanskriti School of Engineering</p>" +
                 "</body></html>";
 
         helper.setText(htmlContent, true);
-        attachFile(helper, sscMarkSheet);
-        attachFile(helper, interMarkSheet);
-        attachFile(helper, interTC);
-        attachFile(helper, interStudyConduct);
-        attachFile(helper, casteIncome);
-        attachFile(helper, aadhar);
-        attachFile(helper, ration);
-        attachFile(helper, passportPhoto);
+
 
         mailSender.send(message);
 
         return "Application Submitted and Email Sent!";
     }
 
-    private void attachFile(MimeMessageHelper helper, MultipartFile file) throws MessagingException, IOException {
-        if (file != null) {
-            helper.addAttachment(file.getOriginalFilename(), new ByteArrayResource(file.getBytes()));
-        }
-    }
 }
