@@ -6,7 +6,6 @@ import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
@@ -18,7 +17,7 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping("/submit")
-    public ResponseEntity<String> submitApplication(@RequestPart("student") StudentDTO student) throws MessagingException,IOException{
+    public ResponseEntity<String> submitApplication(@RequestBody StudentDTO student) throws MessagingException,IOException{
 
         String result = studentService.processStudentApplication(student);
 
