@@ -44,9 +44,6 @@ public class StudentDTO {
     private String diplomaMarks;
     private String diplomaPercentage;
     private String diplomaDivision;
-    private String studentUndertaking;
-    private String parentUndertaking;
-    private String antiRaggingUndertaking;
     private String collegeFee;
     private String hostelBusFee;
     private String otherFee;
@@ -400,30 +397,6 @@ public class StudentDTO {
         this.diplomaDivision = diplomaDivision;
     }
 
-    public String getStudentUndertaking() {
-        return studentUndertaking;
-    }
-
-    public void setStudentUndertaking(String studentUndertaking) {
-        this.studentUndertaking = studentUndertaking;
-    }
-
-    public String getParentUndertaking() {
-        return parentUndertaking;
-    }
-
-    public void setParentUndertaking(String parentUndertaking) {
-        this.parentUndertaking = parentUndertaking;
-    }
-
-    public String getAntiRaggingUndertaking() {
-        return antiRaggingUndertaking;
-    }
-
-    public void setAntiRaggingUndertaking(String antiRaggingUndertaking) {
-        this.antiRaggingUndertaking = antiRaggingUndertaking;
-    }
-
     public String getCollegeFee() {
         return collegeFee;
     }
@@ -510,9 +483,6 @@ public class StudentDTO {
                 ", diplomaMarks='" + diplomaMarks + '\'' +
                 ", diplomaPercentage='" + diplomaPercentage + '\'' +
                 ", diplomaDivision='" + diplomaDivision + '\'' +
-                ", studentUndertaking='" + studentUndertaking + '\'' +
-                ", parentUndertaking='" + parentUndertaking + '\'' +
-                ", antiRaggingUndertaking='" + antiRaggingUndertaking + '\'' +
                 ", collegeFee='" + collegeFee + '\'' +
                 ", hostelBusFee='" + hostelBusFee + '\'' +
                 ", otherFee='" + otherFee + '\'' +
