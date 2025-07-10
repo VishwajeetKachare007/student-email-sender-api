@@ -75,9 +75,6 @@ public class StudentServiceImpl implements StudentService {
                         addRow("Inter %", s.getInterPercentage()) +
                         addRow("Diploma Marks", s.getDiplomaMarks()) +
                         addRow("Diploma %", s.getDiplomaPercentage()) +
-                        addRow("Student Undertaking", s.getStudentUndertaking()) +
-                        addRow("Parent Undertaking", s.getParentUndertaking()) +
-                        addRow("Anti-Ragging", s.getAntiRaggingUndertaking()) +
                         addRow("College Fee", s.getCollegeFee()) +
                         addRow("Hostel/Bus Fee", s.getHostelBusFee()) +
                         addRow("Other Fee", s.getOtherFee()) +
